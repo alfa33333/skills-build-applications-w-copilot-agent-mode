@@ -7,13 +7,18 @@ class Command(BaseCommand):
     help = 'Populate the database with test data for users, teams, activity, leaderboard, and workouts'
 
     def handle(self, *args, **kwargs):
+        self.stdout.write('Debug: Entering the populate_db command...')
+        self.stdout.write('Starting database population...')
+
         # Clear existing data
+        self.stdout.write('Clearing existing data...')
         User.objects.all().delete()
         Team.objects.all().delete()
         Activity.objects.all().delete()
         Leaderboard.objects.all().delete()
         Workout.objects.all().delete()
 
+        self.stdout.write('Creating users...')
         # Create users
         users = [
             User(_id=ObjectId(), username='thundergod', email='thundergod@mhigh.edu', password='thundergodpassword'),
@@ -24,11 +29,13 @@ class Command(BaseCommand):
         ]
         User.objects.bulk_create(users)
 
+        self.stdout.write('Creating teams...')
         # Create teams
         team = Team(_id=ObjectId(), name='Blue Team')
         team.save()
         team.members.set(users)
 
+        self.stdout.write('Creating activities...')
         # Create activities
         activities = [
             Activity(_id=ObjectId(), user=users[0], activity_type='Cycling', duration=timedelta(hours=1)),
@@ -39,6 +46,7 @@ class Command(BaseCommand):
         ]
         Activity.objects.bulk_create(activities)
 
+        self.stdout.write('Creating leaderboard entries...')
         # Create leaderboard entries
         leaderboard_entries = [
             Leaderboard(_id=ObjectId(), user=users[0], score=100),
@@ -49,6 +57,7 @@ class Command(BaseCommand):
         ]
         Leaderboard.objects.bulk_create(leaderboard_entries)
 
+        self.stdout.write('Creating workouts...')
         # Create workouts
         workouts = [
             Workout(_id=ObjectId(), name='Cycling Training', description='Training for a road cycling event'),
