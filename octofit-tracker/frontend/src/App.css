@@ -1,3 +1,67 @@
+body {
+  background-color: #f0f8ff; /* Light blue background */
+  color: #333; /* Dark text color */
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #007bff; /* Bootstrap primary color */
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  color: #ffdd57 !important; /* Yellow hover color */
+}
+
+h1, h2, h3, h4, h5 {
+  color: #007bff; /* Bootstrap primary color */
+}
+
+table {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+td {
+  border: 1px solid #ddd;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.favicon {
+  width: 32px;
+  height: 32px;
+}
+
 .App {
   text-align: center;
 }
